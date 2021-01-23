@@ -333,6 +333,9 @@ homeassistant/components/orangepi_gpio/* @pascallj
 homeassistant/components/oru/* @bvlaicu
 homeassistant/components/ovo_energy/* @timmo001
 homeassistant/components/ozw/* @cgarwood @marcelveldt @MartinHjelmare
+homeassistant/components/pal_cbox/* @marcopal74
+homeassistant/components/pal_new/* @marcopal74
+homeassistant/components/palazzetti/* @marcopal74
 homeassistant/components/panel_custom/* @home-assistant/frontend
 homeassistant/components/panel_iframe/* @home-assistant/frontend
 homeassistant/components/pcal9535a/* @Shulyaka

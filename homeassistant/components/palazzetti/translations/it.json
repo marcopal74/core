@@ -1,0 +1,25 @@
+{
+    "config": {
+        "step": {
+            "link": {
+                "title": "Fake Title",
+                "description": "Press the button on the bridge to register Philips Hue with Home Assistant.\n\n![Location of button on bridge](/static/images/config_philips_hue.jpg)"
+            },
+            "user": {
+                "data": {
+                    "host": "IP ConnBox"
+                },
+                "title": "Palazzetti Stove",
+                "description": "Inserire l'IP della ConnBox"
+            }
+        },
+        "error": {
+            "cannot_connect": "La ConnBox non risponde",
+            "invalid_sn": "Il Serial Number letto dalla scheda non è valido"
+        },
+        "abort": {
+            "cannot_connect": "l'IP inserito non corrisponde ad una Connection Box",
+            "host_exists": "ConnBox già configurata"
+        }
+    }
+}

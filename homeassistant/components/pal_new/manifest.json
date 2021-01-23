@@ -1,0 +1,16 @@
+{
+  "domain": "pal_new",
+  "name": "Palazzetti New",
+  "config_flow": true,
+  "documentation": "https://www.home-assistant.io/integrations/pal_new",
+  "requirements": [
+    "palazzetti-sdk-local-api==1.0.4"
+  ],
+  "ssdp": [],
+  "zeroconf": [],
+  "homekit": {},
+  "dependencies": [],
+  "codeowners": [
+    "@marcopal74"
+  ]
+}

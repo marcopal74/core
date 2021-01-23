@@ -1,0 +1,16 @@
+{
+  "domain": "pal_cbox",
+  "name": "Palazzetti ConnBox",
+  "config_flow": true,
+  "documentation": "https://www.home-assistant.io/integrations/pal_cbox",
+  "requirements": [
+    "palazzetti-sdk-local-api==1.0.4"
+  ],
+  "ssdp": [],
+  "zeroconf": [],
+  "homekit": {},
+  "dependencies": [],
+  "codeowners": [
+    "@marcopal74"
+  ]
+}
