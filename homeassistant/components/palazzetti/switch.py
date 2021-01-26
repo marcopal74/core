@@ -62,6 +62,14 @@ class DemoSwitch(SwitchEntity):
         return True
 
     @property
+    def available(self) -> bool:
+        """Return True if roller and hub is available."""
+        return (
+            self._product.online
+            and self._product.get_data_config_json()["_flag_has_switch_on_off"]
+        )
+
+    @property
     def name(self):
         """Return the name of the device if any."""
         return self._name
