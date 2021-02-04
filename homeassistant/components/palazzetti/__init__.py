@@ -8,7 +8,6 @@ import logging, asyncio
 from homeassistant.core import HomeAssistant
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.helpers.event import (
-    _remove_empty_listener,
     async_track_time_interval,
 )
 from homeassistant.helpers import config_validation as cv, entity_platform
@@ -17,7 +16,7 @@ from homeassistant.helpers.entity_component import EntityComponent
 from homeassistant.const import ATTR_ENTITY_ID
 from .const import DOMAIN, INTERVAL, INTERVAL_CNTR, INTERVAL_STDT, INTERVAL_KPAL
 from .input_number import create_input_number
-from .helper import setup_platform, get_platform
+from .helper import setup_platform
 import voluptuous as vol
 from .palazzetti_sdk_local_api import Palazzetti, PalDiscovery
 
@@ -28,10 +27,8 @@ PLATFORMS = [
     "switch",
     "sensor",
     "input_number",
-    # "fan",
     # "climate",
     "cover",
-    # "light",
 ]
 
 PLATFORMS_2 = [
@@ -39,13 +36,16 @@ PLATFORMS_2 = [
     "switch",
     "sensor",
     # "input_number",
-    # "fan",
     # "climate",
     "cover",
-    # "light",
 ]
 
-LISTENERS = ["_listener_alls", "_listener_cntr", "_listener_stdt"]
+LISTENERS = [
+    "_listener_alls",
+    "_listener_cntr",
+    "_listener_stdt",
+    "_listener_kalive",
+]
 
 
 async def async_keep_alive(hass: HomeAssistant, entry: ConfigEntry):
@@ -54,20 +54,14 @@ async def async_keep_alive(hass: HomeAssistant, entry: ConfigEntry):
 
     if check_ip:
         print("IP now reachable")
-        # clean up all
-        # myplatform = get_platform(hass, "binary_sensor")
-        # if myplatform.entities and entry.state != "not_loaded":
-        # await hass.config_entries.async_forward_entry_unload(entry, "binary_sensor")
-        # re launch setup
         await hass.config_entries.async_reload(entry.entry_id)
     else:
         print("IP not reachable")
 
 
 async def async_upd_alls(hass: HomeAssistant, entry: ConfigEntry):
-    # if class instance is misssing creates it
     if entry.entry_id not in hass.data[DOMAIN]:
-        await async_create_platforms(hass, entry)
+        return
     else:
         _api = hass.data[DOMAIN][entry.entry_id]
         await _api.async_get_alls()
@@ -89,25 +83,6 @@ async def async_upd_stdt(hass: HomeAssistant, entry: ConfigEntry):
 
 async def async_create_platforms(hass: HomeAssistant, entry: ConfigEntry):
     print("Creating platforms")
-    # _config = None
-    # if entry.entry_id in hass.data[DOMAIN]:
-    # è il primo giro entra qui solo se chimato da async_setup_entry con IP raggiungibile
-    # pass
-    # else:
-    # tentativo di creazione partendo dall'aggiornamento periodico della GET ALLS
-    # quando parte da uno stato non connesso
-    # check_api = PalDiscovery()
-    #  check_ip = await check_api.checkIP(entry.data["host"])
-
-    # if not check_ip:
-    # print("IP not reachable")
-    # return
-
-    # the IP is reachable and is a compatible Hub
-    # class_id = entry.unique_id
-    # api = Palazzetti(entry.data["host"], class_id)
-    # to be removed
-    # hass.data[DOMAIN][entry.entry_id] = api
 
     my_api = hass.data[DOMAIN][entry.entry_id]
     await my_api.async_get_alls()
@@ -140,16 +115,6 @@ async def async_create_platforms(hass: HomeAssistant, entry: ConfigEntry):
                 )
         elif component == "input_number":
             hass.async_create_task(create_input_number(hass, entry))
-        # elif component == "binary_sensor":
-        # unload the platform if was loaded while device was unreachable
-        # myplatform = get_platform(hass, component)
-        # if myplatform and entry.state != "not_loaded":
-        # await hass.config_entries.async_forward_entry_unload(entry, component)
-        # await hass.config_entries.async_reload(entry.entry_id)
-        # reload the platform
-        # hass.async_create_task(
-        #     hass.config_entries.async_forward_entry_setup(entry, component)
-        # )
         else:
             hass.async_create_task(
                 hass.config_entries.async_forward_entry_setup(entry, component)
@@ -317,14 +282,14 @@ async def async_unload_entry(hass: HomeAssistant, entry: ConfigEntry):
         )
     )
 
-    if unload_ok:
-        for mylistener in LISTENERS:
-            if entry.entry_id + str(mylistener) in hass.data[DOMAIN]:
-                hass.data[DOMAIN][entry.entry_id + str(mylistener)]()
-                hass.data[DOMAIN].pop(entry.entry_id + str(mylistener))
+    # if unload_ok:
+    for mylistener in LISTENERS:
+        if entry.entry_id + str(mylistener) in hass.data[DOMAIN]:
+            hass.data[DOMAIN][entry.entry_id + str(mylistener)]()
+            hass.data[DOMAIN].pop(entry.entry_id + str(mylistener))
 
-        if entry.entry_id in hass.data[DOMAIN]:
-            hass.data[DOMAIN].pop(entry.entry_id)
+    if entry.entry_id in hass.data[DOMAIN]:
+        hass.data[DOMAIN].pop(entry.entry_id)
 
     # return unload_ok
     return True

@@ -10,27 +10,22 @@ from . import DOMAIN
 
 async def async_setup_entry(hass, config_entry, async_add_entities):
     """Set up the Demo config entry."""
-    # il prodotto non è stato inserito all'esecuzione dell'async_setup_entry
+    # product is offline
     if config_entry.entry_id not in hass.data[DOMAIN]:
+        hubname = "ConnBox"
+        if config_entry.data["hub_isbiocc"]:
+            hubname = "BioCC"
         async_add_entities(
             [
                 PalBinarySensor(
                     config_entry.unique_id,
                     None,
                     "hub",
-                    "Hub",
+                    hubname,
                     DEVICE_CLASS_CONNECTIVITY,
                     None,
-                    config_entry.data["host"],
-                    config_entry.entry_id,
-                ),
-                PalBinarySensor(
-                    config_entry.unique_id,
-                    None,
-                    "prod",
-                    "Prodotto",
-                    DEVICE_CLASS_MOTION,
-                ),
+                    config_entry.data["hub_id"],
+                )
             ]
         )
     else:
@@ -88,8 +83,7 @@ class PalBinarySensor(BinarySensorEntity):
         name,
         device_class,
         mydevice=None,
-        myhost=None,
-        entryid=None,
+        hubid=None,
     ):
         """Initialize the demo sensor."""
         self._product = product
@@ -103,14 +97,13 @@ class PalBinarySensor(BinarySensorEntity):
         self._sensor_type = device_class
         self._ishub = not (mydevice == None)
         self._mydevice = mydevice
-        self._myhost = myhost
-        self._entryid = entryid
+        self._hubid = hubid
 
     @property
     def device_info(self):
         if self._product == None:
             return {
-                "identifiers": {(DOMAIN, self._id)},
+                "identifiers": {(DOMAIN, self._hubid)},
             }
         elif self._ishub:
             return {
@@ -142,7 +135,7 @@ class PalBinarySensor(BinarySensorEntity):
     @property
     def should_poll(self):
         """No polling needed for a demo binary sensor."""
-        return True
+        return self._product is not None
 
     @property
     def name(self):
@@ -154,10 +147,7 @@ class PalBinarySensor(BinarySensorEntity):
         """Return the icon of the sensor."""
         # product is not reachable
         if self._product == None:
-            if self._key == "prod":
-                return "mdi:link-off"
-            else:
-                return "mdi:server-network-off"
+            return "mdi:server-network-off"
         if (not self._ishub) and self._product.online:
             return "mdi:link"
         elif (not self._ishub) and (not self._product.online):
