@@ -4,7 +4,7 @@ from homeassistant.components.binary_sensor import (
     DEVICE_CLASS_MOTION,
     BinarySensorEntity,
 )
-
+from .palazzetti_sdk_local_api import PalDiscovery
 from . import DOMAIN
 
 
@@ -20,6 +20,9 @@ async def async_setup_entry(hass, config_entry, async_add_entities):
                     "hub",
                     "Hub",
                     DEVICE_CLASS_CONNECTIVITY,
+                    None,
+                    config_entry.data["host"],
+                    config_entry.entry_id,
                 ),
                 PalBinarySensor(
                     config_entry.unique_id,
@@ -77,7 +80,17 @@ async def async_setup_entry(hass, config_entry, async_add_entities):
 class PalBinarySensor(BinarySensorEntity):
     """representation of a Demo binary sensor."""
 
-    def __init__(self, myid, product, unique_id, name, device_class, mydevice=None):
+    def __init__(
+        self,
+        myid,
+        product,
+        unique_id,
+        name,
+        device_class,
+        mydevice=None,
+        myhost=None,
+        entryid=None,
+    ):
         """Initialize the demo sensor."""
         self._product = product
         self._key = unique_id
@@ -90,6 +103,8 @@ class PalBinarySensor(BinarySensorEntity):
         self._sensor_type = device_class
         self._ishub = not (mydevice == None)
         self._mydevice = mydevice
+        self._myhost = myhost
+        self._entryid = entryid
 
     @property
     def device_info(self):
@@ -169,3 +184,27 @@ class PalBinarySensor(BinarySensorEntity):
             return cbox_attrib
 
         return _prod_attrib
+
+    # async def async_update(self):
+    #     """Fetch new state data for the sensor.
+
+
+#
+#     This is the only method that should fetch new data for Home Assistant.
+#     """
+#     if self._product == None and self._key == "hub":
+#         check_api = PalDiscovery()
+#         check_ip = await check_api.checkIP(self._myhost)
+#
+#         if check_ip:
+#             print("IP now reachable")
+#             # clean up all
+#             # myplatform = get_platform(hass, "binary_sensor")
+#             # if myplatform.entities and entry.state != "not_loaded":
+#             # await hass.config_entries.async_forward_entry_unload(entry, "binary_sensor")
+#             # re launch setup
+#             await self.hass.config_entries.async_reload(self._entryid)
+#         else:
+#             print("IP not reachable")
+#     else:
+#         print("binary update")
