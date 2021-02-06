@@ -1,0 +1,8 @@
+{
+  "device_automation": {
+    "trigger_type": {
+      "error_on": "{entity_name} in error state",
+      "turned_off": "{entity_name} turned off"
+    }
+  }
+}

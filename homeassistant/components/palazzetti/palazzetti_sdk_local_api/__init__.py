@@ -5,7 +5,7 @@ import aiohttp
 import socket
 import time
 
-from palazzetti_sdk_asset_parser import AssetParser as psap
+from .palazzetti_sdk_asset_parser import AssetParser as psap
 from .exceptions import *
 
 _LOGGER = logging.getLogger(__name__)

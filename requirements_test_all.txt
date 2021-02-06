@@ -529,12 +529,8 @@ ovoenergy==1.1.11
 # homeassistant.components.shiftr
 paho-mqtt==1.5.1
 
-# homeassistant.components.pal_cbox
-# homeassistant.components.pal_new
-palazzetti-sdk-local-api==1.0.4
-
 # homeassistant.components.palazzetti
-palazzetti-sdk-local-api==1.0.5
+palazzetti-sdk-local-api==1.0.8
 
 # homeassistant.components.panasonic_viera
 panasonic_viera==0.3.6

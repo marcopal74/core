@@ -1,0 +1,352 @@
+
+{
+  "header": {
+    "reportVersion": 1,
+    "event": "Allocation failed - JavaScript heap out of memory",
+    "trigger": "FatalError",
+    "filename": "report.20210128.183552.427.0.001.json",
+    "dumpEventTime": "2021-01-28T18:35:52Z",
+    "dumpEventTimeStamp": "1611858952891",
+    "processId": 427,
+    "cwd": "/workspaces/core",
+    "commandLine": [
+      "/vscode/vscode-server/bin/x64/ea3859d4ba2f3e577a159bc91e3074c5d85c0523/node",
+      "/root/.vscode-server/extensions/ms-python.vscode-pylance-2021.1.2/dist/server.bundle.js",
+      "--cancellationReceive=file:010867638c4d64231cc6be1a6760d1da2fcf0f1740",
+      "--node-ipc",
+      "--clientProcessId=167"
+    ],
+    "nodejsVersion": "v12.14.1",
+    "glibcVersionRuntime": "2.28",
+    "glibcVersionCompiler": "2.17",
+    "wordSize": 64,
+    "arch": "x64",
+    "platform": "linux",
+    "componentVersions": {
+      "node": "12.14.1",
+      "v8": "7.7.299.13-node.16",
+      "uv": "1.33.1",
+      "zlib": "1.2.11",
+      "brotli": "1.0.7",
+      "ares": "1.15.0",
+      "modules": "72",
+      "nghttp2": "1.40.0",
+      "napi": "5",
+      "llhttp": "2.0.1",
+      "http_parser": "2.8.0",
+      "openssl": "1.1.1d",
+      "cldr": "35.1",
+      "icu": "64.2",
+      "tz": "2019c",
+      "unicode": "12.1"
+    },
+    "release": {
+      "name": "node",
+      "lts": "Erbium",
+      "headersUrl": "https://nodejs.org/download/release/v12.14.1/node-v12.14.1-headers.tar.gz",
+      "sourceUrl": "https://nodejs.org/download/release/v12.14.1/node-v12.14.1.tar.gz"
+    },
+    "osName": "Linux",
+    "osRelease": "4.19.121-linuxkit",
+    "osVersion": "#1 SMP Tue Dec 1 17:50:32 UTC 2020",
+    "osMachine": "x86_64",
+    "cpus": [
+      {
+        "model": "Intel(R) Core(TM) i7-7820HQ CPU @ 2.90GHz",
+        "speed": 2900,
+        "user": 14222400,
+        "nice": 0,
+        "sys": 13463800,
+        "idle": 925351200,
+        "irq": 0
+      },
+      {
+        "model": "Intel(R) Core(TM) i7-7820HQ CPU @ 2.90GHz",
+        "speed": 2900,
+        "user": 13889300,
+        "nice": 0,
+        "sys": 13588100,
+        "idle": 924810900,
+        "irq": 0
+      },
+      {
+        "model": "Intel(R) Core(TM) i7-7820HQ CPU @ 2.90GHz",
+        "speed": 2900,
+        "user": 10354900,
+        "nice": 0,
+        "sys": 14792200,
+        "idle": 924637000,
+        "irq": 0
+      },
+      {
+        "model": "Intel(R) Core(TM) i7-7820HQ CPU @ 2.90GHz",
+        "speed": 2900,
+        "user": 11818600,
+        "nice": 0,
+        "sys": 13468600,
+        "idle": 923959500,
+        "irq": 0
+      }
+    ],
+    "networkInterfaces": [
+      {
+        "name": "lo",
+        "internal": true,
+        "mac": "00:00:00:00:00:00",
+        "address": "127.0.0.1",
+        "netmask": "255.0.0.0",
+        "family": "IPv4"
+      },
+      {
+        "name": "eth0",
+        "internal": false,
+        "mac": "02:42:ac:11:00:02",
+        "address": "172.17.0.2",
+        "netmask": "255.255.0.0",
+        "family": "IPv4"
+      }
+    ],
+    "host": "170eed4b7986"
+  },
+  "javascriptStack": {
+    "message": "No stack.",
+    "stack": [
+      "Unavailable."
+    ]
+  },
+  "nativeStack": [
+    {
+      "pc": "0x0000000000b05ba5",
+      "symbol": "report::TriggerNodeReport(v8::Isolate*, node::Environment*, char const*, char const*, std::string const&, v8::Local<v8::String>) [/vscode/vscode-server/bin/x64/ea3859d4ba2f3e577a159bc91e3074c5d85c0523/node]"
+    },
+    {
+      "pc": "0x00000000009dbd93",
+      "symbol": "node::OnFatalError(char const*, char const*) [/vscode/vscode-server/bin/x64/ea3859d4ba2f3e577a159bc91e3074c5d85c0523/node]"
+    },
+    {
+      "pc": "0x0000000000b3b18e",
+      "symbol": "v8::Utils::ReportOOMFailure(v8::internal::Isolate*, char const*, bool) [/vscode/vscode-server/bin/x64/ea3859d4ba2f3e577a159bc91e3074c5d85c0523/node]"
+    },
+    {
+      "pc": "0x0000000000b3b509",
+      "symbol": "v8::internal::V8::FatalProcessOutOfMemory(v8::internal::Isolate*, char const*, bool) [/vscode/vscode-server/bin/x64/ea3859d4ba2f3e577a159bc91e3074c5d85c0523/node]"
+    },
+    {
+      "pc": "0x0000000000ce68a5",
+      "symbol": " [/vscode/vscode-server/bin/x64/ea3859d4ba2f3e577a159bc91e3074c5d85c0523/node]"
+    },
+    {
+      "pc": "0x0000000000ce6f36",
+      "symbol": "v8::internal::Heap::RecomputeLimits(v8::internal::GarbageCollector) [/vscode/vscode-server/bin/x64/ea3859d4ba2f3e577a159bc91e3074c5d85c0523/node]"
+    },
+    {
+      "pc": "0x0000000000cf2dca",
+      "symbol": "v8::internal::Heap::PerformGarbageCollection(v8::internal::GarbageCollector, v8::GCCallbackFlags) [/vscode/vscode-server/bin/x64/ea3859d4ba2f3e577a159bc91e3074c5d85c0523/node]"
+    },
+    {
+      "pc": "0x0000000000cf3cd5",
+      "symbol": "v8::internal::Heap::CollectGarbage(v8::internal::AllocationSpace, v8::internal::GarbageCollectionReason, v8::GCCallbackFlags) [/vscode/vscode-server/bin/x64/ea3859d4ba2f3e577a159bc91e3074c5d85c0523/node]"
+    },
+    {
+      "pc": "0x0000000000cf66e8",
+      "symbol": "v8::internal::Heap::AllocateRawWithRetryOrFail(int, v8::internal::AllocationType, v8::internal::AllocationAlignment) [/vscode/vscode-server/bin/x64/ea3859d4ba2f3e577a159bc91e3074c5d85c0523/node]"
+    },
+    {
+      "pc": "0x0000000000cc4336",
+      "symbol": "v8::internal::Factory::NewRawOneByteString(int, v8::internal::AllocationType) [/vscode/vscode-server/bin/x64/ea3859d4ba2f3e577a159bc91e3074c5d85c0523/node]"
+    },
+    {
+      "pc": "0x0000000000efcf82",
+      "symbol": "v8::internal::String::SlowFlatten(v8::internal::Isolate*, v8::internal::Handle<v8::internal::ConsString>, v8::internal::AllocationType) [/vscode/vscode-server/bin/x64/ea3859d4ba2f3e577a159bc91e3074c5d85c0523/node]"
+    },
+    {
+      "pc": "0x000000000103340c",
+      "symbol": "v8::internal::Runtime_StringCharCodeAt(int, unsigned long*, v8::internal::Isolate*) [/vscode/vscode-server/bin/x64/ea3859d4ba2f3e577a159bc91e3074c5d85c0523/node]"
+    },
+    {
+      "pc": "0x0000000001376259",
+      "symbol": " [/vscode/vscode-server/bin/x64/ea3859d4ba2f3e577a159bc91e3074c5d85c0523/node]"
+    }
+  ],
+  "javascriptHeap": {
+    "totalMemory": 1047425024,
+    "totalCommittedMemory": 1046145416,
+    "usedMemory": 1031557856,
+    "availableMemory": 34315480,
+    "memoryLimit": 1068498944,
+    "heapSpaces": {
+      "read_only_space": {
+        "memorySize": 262144,
+        "committedMemory": 32568,
+        "capacity": 261872,
+        "used": 32296,
+        "available": 229576
+      },
+      "new_space": {
+        "memorySize": 2097152,
+        "committedMemory": 1293144,
+        "capacity": 1047488,
+        "used": 264016,
+        "available": 783472
+      },
+      "old_space": {
+        "memorySize": 1026142208,
+        "committedMemory": 1025957592,
+        "capacity": 1024222384,
+        "used": 1013041360,
+        "available": 11181024
+      },
+      "code_space": {
+        "memorySize": 1212416,
+        "committedMemory": 1174240,
+        "capacity": 967424,
+        "used": 967424,
+        "available": 0
+      },
+      "map_space": {
+        "memorySize": 1052672,
+        "committedMemory": 1029440,
+        "capacity": 679280,
+        "used": 679280,
+        "available": 0
+      },
+      "large_object_space": {
+        "memorySize": 16609280,
+        "committedMemory": 16609280,
+        "capacity": 16569928,
+        "used": 16569928,
+        "available": 0
+      },
+      "code_large_object_space": {
+        "memorySize": 49152,
+        "committedMemory": 49152,
+        "capacity": 3552,
+        "used": 3552,
+        "available": 0
+      },
+      "new_large_object_space": {
+        "memorySize": 0,
+        "committedMemory": 0,
+        "capacity": 1047488,
+        "used": 0,
+        "available": 1047488
+      }
+    }
+  },
+  "resourceUsage": {
+    "userCpuSeconds": 123.449,
+    "kernelCpuSeconds": 19.3734,
+    "cpuConsumptionPercent": 0.897802,
+    "maxRss": 1147305984,
+    "pageFaults": {
+      "IORequired": 2753,
+      "IONotRequired": 615413
+    },
+    "fsActivity": {
+      "reads": 285000,
+      "writes": 22360
+    }
+  },
+  "uvthreadResourceUsage": {
+    "userCpuSeconds": 44.9828,
+    "kernelCpuSeconds": 12.6806,
+    "cpuConsumptionPercent": 0.36248,
+    "fsActivity": {
+      "reads": 220840,
+      "writes": 22360
+    }
+  },
+  "libuv": [
+  ],
+  "environmentVariables": {
+    "GIT_EDITOR": "code --wait",
+    "HOSTNAME": "170eed4b7986",
+    "PIPX_HOME": "/usr/local/py-utils",
+    "PYTHON_PIP_VERSION": "20.3.3",
+    "HOME": "/root",
+    "PIPX_BIN_DIR": "/usr/local/py-utils/bin",
+    "NVM_SYMLINK_CURRENT": "true",
+    "GPG_KEY": "E3FF2839C048B25C084DEBE9B26995E310250568",
+    "NVM_DIR": "/usr/local/share/nvm",
+    "REMOTE_CONTAINERS_IPC": "/tmp/vscode-remote-containers-ipc-e3f9885b51c541e2bef9d61e175a46b353a32edb.sock",
+    "PYTHON_GET_PIP_URL": "https://github.com/pypa/get-pip/raw/5f38681f7f5872e4032860b54e9cc11cf0374932/get-pip.py",
+    "PATH": "/vscode/vscode-server/bin/x64/ea3859d4ba2f3e577a159bc91e3074c5d85c0523/bin:/usr/local/share/nvm/current/bin:/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/local/py-utils/bin",
+    "VSCODE_AGENT_FOLDER": "/root/.vscode-server",
+    "REMOTE_CONTAINERS_SOCKETS": "[\"/tmp/vscode-ssh-auth-e3f9885b51c541e2bef9d61e175a46b353a32edb.sock\"]",
+    "LANG": "C.UTF-8",
+    "SHELL": "/bin/bash",
+    "PYTHON_VERSION": "3.8.7",
+    "PWD": "/vscode/vscode-server/bin/x64/ea3859d4ba2f3e577a159bc91e3074c5d85c0523",
+    "PYTHON_GET_PIP_SHA256": "6a0b13826862f33c13b614a921d36253bfa1ae779c5fbf569876f3585057e9d2",
+    "VSCODE_INJECT_NODE_MODULE_LOOKUP_PATH": "/vscode/vscode-server/bin/x64/ea3859d4ba2f3e577a159bc91e3074c5d85c0523/remote/node_modules",
+    "AMD_ENTRYPOINT": "vs/server/remoteExtensionHostProcess",
+    "PIPE_LOGGING": "true",
+    "VERBOSE_LOGGING": "true",
+    "VSCODE_EXTHOST_WILL_SEND_SOCKET": "true",
+    "VSCODE_HANDLES_UNCAUGHT_ERRORS": "true",
+    "VSCODE_LOG_STACK": "false",
+    "VSCODE_NLS_CONFIG": "{\"locale\":\"en\",\"availableLanguages\":{}}",
+    "BROWSER": "/vscode/vscode-server/bin/x64/ea3859d4ba2f3e577a159bc91e3074c5d85c0523/bin/helpers/browser.sh",
+    "SSH_AUTH_SOCK": "/tmp/vscode-ssh-auth-e3f9885b51c541e2bef9d61e175a46b353a32edb.sock",
+    "REMOTE_CONTAINERS": "true",
+    "VSCODE_IPC_HOOK_CLI": "/tmp/vscode-ipc-5901fbf2-de29-49bf-aee1-d290d763f5d2.sock",
+    "APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL": "true",
+    "ELECTRON_RUN_AS_NODE": "1",
+    "ELECTRON_NO_ASAR": "1"
+  },
+  "userLimits": {
+    "core_file_size_blocks": {
+      "soft": 0,
+      "hard": "unlimited"
+    },
+    "data_seg_size_kbytes": {
+      "soft": "unlimited",
+      "hard": "unlimited"
+    },
+    "file_size_blocks": {
+      "soft": "unlimited",
+      "hard": "unlimited"
+    },
+    "max_locked_memory_bytes": {
+      "soft": 65536,
+      "hard": 65536
+    },
+    "max_memory_size_kbytes": {
+      "soft": "unlimited",
+      "hard": "unlimited"
+    },
+    "open_files": {
+      "soft": 1048576,
+      "hard": 1048576
+    },
+    "stack_size_bytes": {
+      "soft": 8388608,
+      "hard": "unlimited"
+    },
+    "cpu_time_seconds": {
+      "soft": "unlimited",
+      "hard": "unlimited"
+    },
+    "max_user_processes": {
+      "soft": "unlimited",
+      "hard": "unlimited"
+    },
+    "virtual_memory_kbytes": {
+      "soft": "unlimited",
+      "hard": "unlimited"
+    }
+  },
+  "sharedObjects": [
+    "linux-vdso.so.1",
+    "/lib/x86_64-linux-gnu/libdl.so.2",
+    "/usr/lib/x86_64-linux-gnu/libstdc++.so.6",
+    "/lib/x86_64-linux-gnu/libm.so.6",
+    "/lib/x86_64-linux-gnu/libgcc_s.so.1",
+    "/lib/x86_64-linux-gnu/libpthread.so.0",
+    "/lib/x86_64-linux-gnu/libc.so.6",
+    "/lib64/ld-linux-x86-64.so.2",
+    "/root/.vscode-server/extensions/ms-python.vscode-pylance-2021.1.2/dist/onnxruntime_binding.node",
+    "/root/.vscode-server/extensions/ms-python.vscode-pylance-2021.1.2/dist/libonnxruntime.so.1.4.0",
+    "/lib/x86_64-linux-gnu/librt.so.1"
+  ]
+}
